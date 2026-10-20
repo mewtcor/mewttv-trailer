@@ -1,0 +1,11 @@
+<!doctype html>
+<meta charset="utf-8"><meta name="viewport" content="width=1920">
+<title>mewttv trailer</title>
+<style>html,body{margin:0;height:100%;background:#000;overflow:hidden}iframe{border:0;width:100%;height:100%;display:block}</style>
+<!-- Tiny page for the mewttv TV app: YouTube's embed only plays on a page with a web address. ?v=<youtube id>. The app's play/pause commands are passed through. -->
+<iframe id="y" allow="autoplay; encrypted-media"></iframe>
+<script>
+var v = (location.search.match(/[?&]v=([\w-]{11})/) || [])[1], y = document.getElementById('y');
+if (v) y.src = 'https://www.youtube.com/embed/' + v + '?autoplay=1&controls=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&fs=0&iv_load_policy=3&origin=' + encodeURIComponent(location.origin);
+addEventListener('message', function (e) { if (e.source === parent && e.source !== window) y.contentWindow.postMessage(e.data, '*'); });
+</script>
